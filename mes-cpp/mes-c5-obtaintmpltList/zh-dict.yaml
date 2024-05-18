@@ -1,0 +1,8 @@
+DetectionTemplate:
+ field:
+  template_id: 检测模板ID
+  template_code: 检测模板编号
+  template_name: 检测模板名称
+  qc_types: 检测种类
+  enable_flag: 是否启用
+  remark: 备注
