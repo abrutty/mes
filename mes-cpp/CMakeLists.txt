@@ -163,5 +163,7 @@ if(DEFINED UNIT_TEST)
 endif()
 # 这是示例模块，后期可以不编译它
 add_subdirectory ("arch-demo")
-# 在后面添加你的模块
+# 添加获取待检任务列表
 add_subdirectory("mes-c5-obtainawaitinspectionlist")
+# 添加删除检测模块
+add_subdirectory("mes-c5-deletdetectiontemplate")
