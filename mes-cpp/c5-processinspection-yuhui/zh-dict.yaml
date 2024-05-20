@@ -31,3 +31,15 @@ processinspection:
   inspector: 检测人员
   status: 单据状态
   remark: 备注
+DetectionTemplate:
+ put:
+  summary: 修改检测模板
+ field:
+  template_id: 检测模板ID
+  template_code: 检测模板编号
+  template_name: 检测模板名称
+  qc_types: 检测种类
+  enable_flag: 是否启用
+  remark: 备注
+  item_code: 产品编码
+  item_name: 产品名称

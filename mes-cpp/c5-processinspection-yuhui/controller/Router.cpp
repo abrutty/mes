@@ -20,7 +20,7 @@
 #include "Router.h"
 #include "ApiHelper.h"
 #include "controller/ProcessinSpection/ProcessinSpectionController.h"
-
+#include "controller/detectiontemplate/DetectionTemplateController.h"
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
 #include "sample/SampleController.h"
@@ -53,7 +53,8 @@ void Router::initRouter()
 
 	//#TIP :系统扩展路由定义，写在这个后面
 	ROUTER_SIMPLE_BIND(ProcessinSpectionController);
-}
+	ROUTER_SIMPLE_BIND(DetectionTemplateController);
+}	
 
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()
