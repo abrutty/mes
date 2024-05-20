@@ -7,7 +7,7 @@ cmake_minimum_required (VERSION 3.8)
 set(IS_ARCH_DEMO false)
 
 # 设置文件名称
-set (appName mes-c5-obtaintmpltList)
+set (appName mes-c5-detectiontemplate)
 
 # 包含库目录
 include_directories ("./")

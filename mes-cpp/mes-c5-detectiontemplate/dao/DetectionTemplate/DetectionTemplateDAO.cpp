@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "DetectionTemplateDAO.h"
+#include "DetectionTemplateMapper.h"
 #include <sstream>
 
 //定义条件解析宏，减少重复代码

@@ -163,5 +163,5 @@ if(DEFINED UNIT_TEST)
 endif()
 # 这是示例模块，后期可以不编译它
 add_subdirectory ("arch-demo")
-add_subdirectory ("mes-c5-obtaintmpltList")
+add_subdirectory ("mes-c5-detectiontemplate")
 # 在后面添加你的模块
