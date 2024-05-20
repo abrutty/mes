@@ -38,7 +38,7 @@ public:	// 定义接口
 		//API_DEF_ADD_QUERY_PARAMS(String, "remark", ZH_WORDS_GETTER("DetectionTemplate.field.remark"), "", false);
 	}
 
-	ENDPOINT(API_M_GET, "/getDetectionTemplateList/page", queryDetectionTemplateList, QUERIES(QueryParams, queryParams), API_HANDLER_AUTH_PARAME) {
+	ENDPOINT(API_M_GET, "/detectiontemplate/getdetectiontemplatelist/page", queryDetectionTemplateList, QUERIES(QueryParams, queryParams), API_HANDLER_AUTH_PARAME) {
 		// 解析查询参数为Query领域模型
 		API_HANDLER_QUERY_PARAM(templateListQuery, DetectionTemplateQuery, queryParams);
 		// 呼叫执行函数
