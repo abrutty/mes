@@ -1,21 +1,3 @@
-/*
- Copyright Zero One Star. All rights reserved.
-
- @Author: awei
- @Date: 2022/10/25 10:58:42
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-	  https://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
-*/
 #include "stdafx.h"
 #include "SampleController.h"
 #include "../../service/sample/SampleService.h"
@@ -23,11 +5,11 @@
 
 SamplePageJsonVO::Wrapper SampleController::execQuerySample(const SampleQuery::Wrapper& query, const PayloadDTO& payload)
 {
-	// ¶¨ÒåÒ»¸öService
+	// å®šä¹‰ä¸€ä¸ªService
 	SampleService service;
-	// ²éÑ¯Êı¾İ
+	// æŸ¥è¯¢æ•°æ®
 	auto result = service.listAll(query);
-	// ÏìÓ¦½á¹û
+	// å“åº”ç»“æœ
 	auto jvo = SamplePageJsonVO::createShared();
 	jvo->success(result);
 	return jvo;
@@ -35,25 +17,25 @@ SamplePageJsonVO::Wrapper SampleController::execQuerySample(const SampleQuery::W
 
 Uint64JsonVO::Wrapper SampleController::execAddSample(const SampleDTO::Wrapper& dto)
 {
-	// ¶¨Òå·µ»ØÊı¾İ¶ÔÏó
+	// å®šä¹‰è¿”å›æ•°æ®å¯¹è±¡
 	auto jvo = Uint64JsonVO::createShared();
-	// ²ÎÊıĞ£Ñé
-	// ·Ç¿ÕĞ£Ñé
+	// å‚æ•°æ ¡éªŒ
+	// éç©ºæ ¡éªŒ
 	if (!dto->age || !dto->name || !dto->sex)
 	{
 		jvo->init(UInt64(-1), RS_PARAMS_INVALID);
 		return jvo;
 	}
-	// ÓĞĞ§ÖµĞ£Ñé
+	// æœ‰æ•ˆå€¼æ ¡éªŒ
 	if (dto->age < 0 || dto->name->empty() || dto->sex->empty())
 	{
 		jvo->init(UInt64(-1), RS_PARAMS_INVALID);
 		return jvo;
 	}
 
-	// ¶¨ÒåÒ»¸öService
+	// å®šä¹‰ä¸€ä¸ªService
 	SampleService service;
-	// Ö´ĞĞÊı¾İĞÂÔö
+	// æ‰§è¡Œæ•°æ®æ–°å¢
 	uint64_t id = service.saveData(dto);
 	if (id > 0) {
 		jvo->success(UInt64(id));
@@ -62,23 +44,23 @@ Uint64JsonVO::Wrapper SampleController::execAddSample(const SampleDTO::Wrapper& 
 	{
 		jvo->fail(UInt64(id));
 	}
-	//ÏìÓ¦½á¹û
+	//å“åº”ç»“æœ
 	return jvo;
 }
 
 Uint64JsonVO::Wrapper SampleController::execModifySample(const SampleDTO::Wrapper& dto)
 {
-	// ¶¨Òå·µ»ØÊı¾İ¶ÔÏó
+	// å®šä¹‰è¿”å›æ•°æ®å¯¹è±¡
 	auto jvo = Uint64JsonVO::createShared();
-	// ²ÎÊıĞ£Ñé
+	// å‚æ•°æ ¡éªŒ
 	if (!dto->id || dto->id <= 0)
 	{
 		jvo->init(UInt64(-1), RS_PARAMS_INVALID);
 		return jvo;
 	}
-	// ¶¨ÒåÒ»¸öService
+	// å®šä¹‰ä¸€ä¸ªService
 	SampleService service;
-	// Ö´ĞĞÊı¾İĞŞ¸Ä
+	// æ‰§è¡Œæ•°æ®ä¿®æ”¹
 	if (service.updateData(dto)) {
 		jvo->success(dto->id);
 	}
@@ -86,23 +68,23 @@ Uint64JsonVO::Wrapper SampleController::execModifySample(const SampleDTO::Wrappe
 	{
 		jvo->fail(dto->id);
 	}
-	// ÏìÓ¦½á¹û
+	// å“åº”ç»“æœ
 	return jvo;
 }
 
 Uint64JsonVO::Wrapper SampleController::execRemoveSample(const UInt64& id)
 {
-	// ¶¨Òå·µ»ØÊı¾İ¶ÔÏó
+	// å®šä¹‰è¿”å›æ•°æ®å¯¹è±¡
 	auto jvo = Uint64JsonVO::createShared();
-	// ²ÎÊıĞ£Ñé
+	// å‚æ•°æ ¡éªŒ
 	if (!id || id <= 0)
 	{
 		jvo->init(UInt64(-1), RS_PARAMS_INVALID);
 		return jvo;
 	}
-	// ¶¨ÒåÒ»¸öService
+	// å®šä¹‰ä¸€ä¸ªService
 	SampleService service;
-	// Ö´ĞĞÊı¾İÉ¾³ı
+	// æ‰§è¡Œæ•°æ®åˆ é™¤
 	if (service.removeData(id.getValue(0))) {
 		jvo->success(id);
 	}
@@ -110,26 +92,26 @@ Uint64JsonVO::Wrapper SampleController::execRemoveSample(const UInt64& id)
 	{
 		jvo->fail(id);
 	}
-	// ÏìÓ¦½á¹û
+	// å“åº”ç»“æœ
 	return jvo;
 }
 
 SampleJsonVO::Wrapper SampleController::execQueryOne(const UInt64& id, const PayloadDTO& payload)
 {
-	// ´´½¨¿Í»§¶Ë¶ÔÏó
+	// åˆ›å»ºå®¢æˆ·ç«¯å¯¹è±¡
 	API_CLIENT_CREATE(ac, om, SampleApiClient, "sample-api");
-	// ¹¹½¨Æ¾Ö¤
+	// æ„å»ºå‡­è¯
 	std::string token = PayloadDTO::getTokenPrefix() + payload.getToken();
-	// ·µ»Ø²éÑ¯½á¹û
+	// è¿”å›æŸ¥è¯¢ç»“æœ
 	return ac->queryById(token, id)->readBodyToDto<SampleJsonVO::Wrapper>(om);
 }
 
 SamplePageJsonVO::Wrapper SampleController::execQueryAll(const SampleQuery::Wrapper& query, const PayloadDTO& payload)
 {
-	// ´´½¨¿Í»§¶Ë¶ÔÏó
+	// åˆ›å»ºå®¢æˆ·ç«¯å¯¹è±¡
 	API_CLIENT_CREATE(ac, om, SampleApiClient, "sample-api");
-	// ¹¹½¨Æ¾Ö¤
+	// æ„å»ºå‡­è¯
 	std::string token = PayloadDTO::getTokenPrefix() + payload.getToken();
-	// ·µ»Ø²éÑ¯½á¹û
+	// è¿”å›æŸ¥è¯¢ç»“æœ
 	return ac->queryAll(token, query->pageIndex, query->pageSize, URIUtil::urlEncode(query->name))->readBodyToDto<SamplePageJsonVO::Wrapper>(om);
 }
