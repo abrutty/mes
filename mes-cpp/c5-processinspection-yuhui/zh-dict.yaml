@@ -1,7 +1,9 @@
 processinspection:
+ delete:
+  summary: 删除过程检验列表
  get:
-  summary: 过程检验
- describe:
+  summary: 获取过程检验列表
+ field:
   id: 编号
   ipqc_code: 检验单编号
   ipqc_name: 检验单名称

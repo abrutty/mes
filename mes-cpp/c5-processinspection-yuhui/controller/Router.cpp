@@ -19,7 +19,7 @@
 #include "stdafx.h"
 #include "Router.h"
 #include "ApiHelper.h"
-#include "controller/ProcessinSpectionController.h"
+#include "controller/ProcessinSpection/ProcessinSpectionController.h"
 
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
