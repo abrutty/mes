@@ -1,0 +1,61 @@
+processinspection:
+ get:
+  summary: 获取过程检验列表(条件+分页)
+ put:
+  summary: 修改过程检测项   
+ field:
+  id: 编号
+  ipqccode: 检验单编号
+  ipqc_name: 检验单名称
+  ipqc_type: 检验类型
+  workorder_code: 工单编号
+  workorder_name: 工单名称
+  workstation_id: 工作站编号
+  workstation_name: 工作站名称
+  item_code: 产品物料编码
+  item_name: 产品物料名称
+  specification: 规格型号
+  process_code: 工序编码
+  process_name: 工序名称
+  task_code: 任务编号
+
+detectionitemsettings:
+ delete: 
+  summary: 删除检测项
+ field: 
+  id: 编号  
+
+qualitycontrol:
+ detectionitemsettings:
+  controller:
+   query:
+    summary: 分页查询检测项设置
+    code: 检测项编码
+    def_code: 10001
+    name: 检测项名称
+    def_name: 长度
+    type: 检测项类型
+    def_type: 重量
+   add:
+    summary: 添加一个检测项
+   modify: 
+    summary: 修改一个检测项
+  domain:
+    id: id号
+    code: 检测项编码
+    name: 检测项名称
+    type: 检测项类型
+    tool: 检测工具
+    remark: 备注
+
+MaterialProducts:
+ field:
+  templateId: 
+  itemCode: 
+  itemName: 
+  unitOfmeasure: 
+  quantityCheck: 
+  majRate: 
+  minRate:
+  remark:
+  createTime:

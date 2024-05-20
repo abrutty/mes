@@ -165,3 +165,4 @@ endif()
 add_subdirectory ("arch-demo")
 # 在后面添加你的模块
 add_subdirectory ("c5-processinspection-yuhui")
+add_subdirectory("c5-deleteitem_getlist_modifyinspection-moxiaoyang")
