@@ -13,9 +13,9 @@
 // 0 定义API控制器使用宏
 #include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
 
-class EnsureFinishOrdersController : public oatpp::web::server::api::ApiController {
+class GetInspectionController : public oatpp::web::server::api::ApiController {
 	// 定义控制器
-	API_ACCESS_DECLARE(EnsureFinishOrdersController);
+	API_ACCESS_DECLARE(GetInspectionController);
 
 
 public:	// 定义接口
@@ -28,7 +28,7 @@ public:	// 定义接口
 
 	ENDPOINT(API_M_GET, "/processinspection/inspectiondetails", queryGetInspectionDetails, QUERIES(QueryParams, QueryParams), API_HANDLER_AUTH_PARAME) {
 		API_HANDLER_QUERY_PARAM(detailsQuery, ProcessinSpectionQuery, QueryParams);
-		API_HANDLER_RESP_VO(execQueryInspectionDetails, authObject->getPayload());
+		API_HANDLER_RESP_VO(execQueryInspectionDetails(detailsQuery, authObject->getPayload()));
 	}
 
 private:

@@ -6,9 +6,9 @@
 #include "ServerInfo.h"
 #include "domain/query/PageQuery.h"
 #include "domain/vo/BaseJsonVO.h"
-#include "domain/query/ProcessinSpection/ProcessinSpectionQuery.h"
+//#include "domain/query/ProcessinSpection/ProcessinSpectionQuery.h"
 #include "domain/dto/ProcessinSpection/ProcessinSpectionDTO.h"
-#include "domain/vo/ProcessinSpection/ProcessinSpectionVO.h"
+//#include "domain/vo/ProcessinSpection/ProcessinSpectionVO.h"
 
 // 0 定义API控制器使用宏
 #include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
