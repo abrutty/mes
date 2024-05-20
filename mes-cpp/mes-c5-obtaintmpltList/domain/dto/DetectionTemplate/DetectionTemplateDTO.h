@@ -37,10 +37,10 @@ class DetectionTemplateDTO : public oatpp::DTO {
 		info->description = ZH_WORDS_GETTER("DetectionTemplate.field.enable_flag");
 	}
 	// ±¸×¢
-	DTO_FIELD(String, remark);
+	/*DTO_FIELD(String, remark);
 	DTO_FIELD_INFO(remark) {
 		info->description = ZH_WORDS_GETTER("DetectionTemplate.field.remark");
-	}
+	}*/
 };
 
 /**

@@ -1,4 +1,6 @@
 DetectionTemplate:
+ get:
+  title: 获取检测模板列表
  field:
   template_id: 检测模板ID
   template_code: 检测模板编号
