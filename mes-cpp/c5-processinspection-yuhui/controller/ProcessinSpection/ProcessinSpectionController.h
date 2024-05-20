@@ -12,7 +12,7 @@
 #include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
 
 /**
- * 获取过程检验列表(条件+分页) 余晖
+ * 获取过程检验列表(条件+分页) 删除过程检验列表(支持批量删除) 余晖
  */
 class ProcessinSpectionController : public oatpp::web::server::api::ApiController // 1 继承控制器
 {
@@ -47,20 +47,22 @@ public:
 	}
 
 	// 3.1 定义删除接口描述
-	ENDPOINT_INFO(removeProcessinSpection) {
-		// 定义标题和返回类型以及授权支持
-		API_DEF_ADD_COMMON_AUTH(ZH_WORDS_GETTER("processinspection.delete.summary"), Uint64JsonVO::Wrapper);
-		// 定义其他路径参数说明
-		API_DEF_ADD_PATH_PARAMS(UInt64, "id", ZH_WORDS_GETTER("processinspection.field.id"), 1, true);
-	}
+	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("processinspection.delete.summary"), removeProcessinSpection, Uint64JsonVO::Wrapper);
 	// 3.2 定义删除接口处理
-	API_HANDLER_ENDPOINT_AUTH(API_M_DEL, "/ProcessinSpection/remove_by_id/{id}", removeProcessinSpection, PATH(UInt64, id), execRemoveProcessinSpection(id));
+	API_HANDLER_ENDPOINT_AUTH(API_M_DEL, "/ProcessinSpection/remove", removeProcessinSpection, BODY_DTO(oatpp::List<UInt64>, ids), execRemoveProcessinSpection(ids));
 	
+	// 3.1 定义导出接口描述
+	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("processinspection.export.summary"), exportProcessinSpection, StringJsonVO::Wrapper);
+	// 3.2 定义导出接口处理
+	API_HANDLER_ENDPOINT_AUTH(API_M_POST, "/ProcessinSpection/export", exportProcessinSpection, BODY_DTO(oatpp::List<UInt64>, ids), execExportProcessinSpection(ids));
+
 private:
 	// 3.3 演示分页查询数据
 	ProcessinSpectionPageJsonVO::Wrapper execProcessinSpection(const ProcessinSpectionQuery::Wrapper& query, const PayloadDTO& payload);
 	
-	Uint64JsonVO::Wrapper execRemoveProcessinSpection(const UInt64& id);
+	Uint64JsonVO::Wrapper execRemoveProcessinSpection(const oatpp::List<UInt64>& ids);
+
+	StringJsonVO::Wrapper execExportProcessinSpection(const oatpp::List<UInt64>& ids);
 };
 
 // 0 取消API控制器使用宏

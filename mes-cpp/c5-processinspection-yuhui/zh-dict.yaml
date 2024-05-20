@@ -1,4 +1,6 @@
 processinspection:
+ export:
+  summary: 导出过程检验
  delete:
   summary: 删除过程检验列表
  get:

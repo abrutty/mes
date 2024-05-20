@@ -9,7 +9,12 @@ ProcessinSpectionPageJsonVO::Wrapper ProcessinSpectionController::execProcessinS
 	return {};
 }
 
-Uint64JsonVO::Wrapper ProcessinSpectionController::execRemoveProcessinSpection(const UInt64& id)
+Uint64JsonVO::Wrapper ProcessinSpectionController::execRemoveProcessinSpection(const List<UInt64>& ids)
 {
 	return Uint64JsonVO::Wrapper();
+}
+
+StringJsonVO::Wrapper ProcessinSpectionController::execExportProcessinSpection(const oatpp::List<UInt64>& ids)
+{
+	return StringJsonVO::Wrapper();
 }
