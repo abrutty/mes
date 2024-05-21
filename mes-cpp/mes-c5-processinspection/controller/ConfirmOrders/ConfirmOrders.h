@@ -20,6 +20,7 @@ class ConfirmOrdersController : public oatpp::web::server::api::ApiController {
 
 public:	// 定义接口
 
+	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("todo"), confirmOrders, Uint64JsonVO::Wrapper);
 	// 确认、完成检验单
 	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/processinspection/confirmorders", confirmOrders, 
 		BODY_DTO(ProcessinSpectionDTO::Wrapper, dto), execConfirmOrders(dto));
