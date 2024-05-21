@@ -13,13 +13,14 @@
 // 0 定义API控制器使用宏
 #include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
 
+// 确认、完成检验单
 class ConfirmOrdersController : public oatpp::web::server::api::ApiController {
 	// 定义控制器
 	API_ACCESS_DECLARE(ConfirmOrdersController);
 
 
 public:	// 定义接口
-
+	// 确认、完成检验单
 	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("todo"), confirmOrders, Uint64JsonVO::Wrapper);
 	// 确认、完成检验单
 	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/processinspection/confirmorders", confirmOrders, 

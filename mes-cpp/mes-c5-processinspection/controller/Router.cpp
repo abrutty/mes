@@ -54,8 +54,8 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-	ROUTER_SIMPLE_BIND(ConfirmOrdersController);
-	ROUTER_SIMPLE_BIND(GetInspectionController);
+	ROUTER_SIMPLE_BIND(ConfirmOrdersController);	// 确认、完成检验单
+	ROUTER_SIMPLE_BIND(GetInspectionController);	// 获取过程检验详情
 }
 
 #ifdef HTTP_SERVER_DEMO
