@@ -1,0 +1,22 @@
+#pragma once
+#ifndef _TEMPLATEDETECTITEM_DAO_
+#define _TEMPLATEDETECTITEM_DAO_
+
+#include "BaseDAO.h"
+#include "../../../domain/do/detectiontemplate/TemplateDetectItemDO.h"
+#include "../../../domain/query/detectiontemplate/TemplateDetectItemQuery.h"
+
+class TemplateDetectItemDAO :public BaseDAO
+{
+public:
+	// 分页查询数据
+	list<TemplateDetectItemDO> selectTemplateDetectItemWithPage(const TemplateDetectItemQuery::Wrapper& query);
+	// 修改数据
+	int updateTemplateDetectItem(const TemplateDetectItemDO& uObj);
+	// 插入数据
+	uint64_t insertTemplateDetectItem(const TemplateDetectItemDO& iObj);
+	// 通过ID删除数据
+	int deleteByRecordId(uint64_t record_id);
+};
+
+#endif // !_TEMPLATEDETECTITEM_DAO_

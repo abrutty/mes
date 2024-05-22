@@ -56,6 +56,25 @@ public:
 	// 3.2 定义导出接口处理
 	API_HANDLER_ENDPOINT_AUTH(API_M_POST, "/ProcessinSpection/export", exportProcessinSpection, BODY_DTO(oatpp::List<UInt64>, ids), execExportProcessinSpection(ids));
 
+	// 获取过程检验详情
+	ENDPOINT_INFO(queryGetInspectionDetails) {
+		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("todo"));
+		API_DEF_ADD_AUTH();
+		API_DEF_ADD_RSP_JSON_WRAPPER(ProcessinSpectionJsonVO);
+		//API_DEF_ADD_PAGE_PARAMS();
+		API_DEF_ADD_QUERY_PARAMS(String, "ipqc_code", ZH_WORDS_GETTER("processinspection.field.ipqc_code"), "test", true);	// 只能根据检验单编号查询
+	}
+	ENDPOINT(API_M_GET, "/processinspection/inspectiondetails", queryGetInspectionDetails, QUERIES(QueryParams, queryParams), API_HANDLER_AUTH_PARAME) {
+		API_HANDLER_QUERY_PARAM(detailsQuery, ProcessinSpectionQuery, queryParams);
+		API_HANDLER_RESP_VO(execQueryInspectionDetails(detailsQuery, authObject->getPayload()));
+	}
+
+	// 定义接口描述
+	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("processinspection.get.summary"), modifyTheProcessInspection, Uint64JsonVO::Wrapper);
+
+	// 定义修改过程检验接口处理
+	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/processinspection/modify", modifyTheProcessInspection, BODY_DTO(ProcessinSpectionDTO::Wrapper, dto), execModifyTheProcessInspection(dto));
+
 private:
 	// 3.3 演示分页查询数据
 	ProcessinSpectionPageJsonVO::Wrapper execProcessinSpection(const ProcessinSpectionQuery::Wrapper& query, const PayloadDTO& payload);
@@ -63,6 +82,12 @@ private:
 	Uint64JsonVO::Wrapper execRemoveProcessinSpection(const oatpp::List<UInt64>& ids);
 
 	StringJsonVO::Wrapper execExportProcessinSpection(const oatpp::List<UInt64>& ids);
+
+	ProcessinSpectionJsonVO::Wrapper execQueryInspectionDetails(const ProcessinSpectionQuery::Wrapper& query, const PayloadDTO& payload);
+
+	//Uint64JsonVO::Wrapper execConfirmOrders(const ProcessinSpectionDTO::Wrapper& dto);
+
+	Uint64JsonVO::Wrapper execModifyTheProcessInspection(const ProcessinSpectionDTO::Wrapper& dto);
 };
 
 // 0 取消API控制器使用宏

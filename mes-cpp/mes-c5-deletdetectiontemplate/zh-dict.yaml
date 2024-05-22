@@ -1,5 +1,0 @@
-detection_template:
- delete:
-  summary: 删除检测模板
- fields:
-  id: 编号   

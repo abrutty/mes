@@ -1,0 +1,91 @@
+#pragma once
+#ifndef _DETECTIONTEMPLATE_CONTROLLER_
+#define _DETECTIONTEMPLATE_CONTROLLER_
+
+#include "Macros.h"
+#include "domain/vo/BaseJsonVO.h"
+#include "../../domain/dto/detectiontemplate/DetectionTemplateDTO.h"
+#include "../../domain/query/detectiontemplate/DetectionTemplateQuery.h"
+#include "../../domain/vo/detectiontemplate/DetectionTemplateVO.h"
+
+// 0 定义API控制器使用宏
+#include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
+
+/**
+ * 修改检测模板 余晖
+ */
+class DetectionTemplateController : public oatpp::web::server::api::ApiController // 1 继承控制器
+{
+	// 2 定义控制器访问入口
+	API_ACCESS_DECLARE(DetectionTemplateController);
+	// 3 定义接口
+public:
+	// 3.1 定义修改接口描述
+	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("DetectionTemplate.put.summary"), modifyDetectionTemplate, Uint64JsonVO::Wrapper);
+	// 3.2 定义修改接口处理
+	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/DetectionTemplate/modify", modifyDetectionTemplate, BODY_DTO(DetectionTemplateDTO::Wrapper, dto), execModifyDetectionTemplate(dto));
+
+	ENDPOINT_INFO(removeSample) {
+		// 定义标题和返回类型以及授权支持
+		API_DEF_ADD_COMMON_AUTH(ZH_WORDS_GETTER("detection_template.delete.summary"), Uint64JsonVO::Wrapper);
+		// 定义其他路径参数说明
+		API_DEF_ADD_PATH_PARAMS(UInt64, "id", ZH_WORDS_GETTER("detection_template.fields.id"), 1, true);
+	}
+	// 3.2 定义删除接口处理
+	API_HANDLER_ENDPOINT_AUTH(API_M_DEL, "/template/{id}", removeSample, PATH(UInt64, id), execRemoveSample(id));
+
+	ENDPOINT_INFO(queryDetectionTemplateList) {
+		// 定义接口标题
+		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("DetectionTemplate.get.title"));
+		// 定义默认授权参数（可选定义，如果定义了，下面ENDPOINT里面需要加入API_HANDLER_AUTH_PARAME）
+		API_DEF_ADD_AUTH();
+		// 定义响应参数格式
+		API_DEF_ADD_RSP_JSON_WRAPPER(DetectionTemplatePageJsonVO);
+		// 定义分页查询参数描述
+		API_DEF_ADD_PAGE_PARAMS();
+		// 定义其他查询参数描述
+		API_DEF_ADD_QUERY_PARAMS(UInt64, "template_id", ZH_WORDS_GETTER("DetectionTemplate.field.template_id"), 18, false);
+		API_DEF_ADD_QUERY_PARAMS(String, "template_code", ZH_WORDS_GETTER("DetectionTemplate.field.template_code"), "QCT2022040", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "template_name", ZH_WORDS_GETTER("DetectionTemplate.field.template_name"), "", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "enable_flag", ZH_WORDS_GETTER("DetectionTemplate.field.enable_flag"), "Y", false);
+		API_DEF_ADD_QUERY_PARAMS(String, "remark", ZH_WORDS_GETTER("DetectionTemplate.field.remark"), "", false);
+	}
+
+	ENDPOINT(API_M_GET, "/detectiontemplate/getdetectiontemplatelist/page", queryDetectionTemplateList, QUERIES(QueryParams, queryParams), API_HANDLER_AUTH_PARAME) {
+		// 解析查询参数为Query领域模型
+		API_HANDLER_QUERY_PARAM(templateListQuery, DetectionTemplateQuery, queryParams);
+		// 呼叫执行函数
+		API_HANDLER_RESP_VO(execQueryDetectionTemplateList(templateListQuery, authObject->getPayload()));
+	}
+
+	// 定义新增接口描述
+	ENDPOINT_INFO(addDetectionTemplate) {
+		// 定义接口标题
+		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("DetectionTemplate.post.summary"));
+		// 定义默认授权参数（可选定义，如果定义了，下面ENDPOINT里面需要加入API_HANDLER_AUTH_PARAME）
+		API_DEF_ADD_AUTH();
+		// 定义响应参数格式
+		API_DEF_ADD_RSP_JSON_WRAPPER(Uint64JsonVO);
+	}
+	// 定义新增接口处理
+	ENDPOINT(API_M_POST, "/detectiontemplate", addDetectionTemplate, BODY_DTO(DetectionTemplateDTO::Wrapper, dto), API_HANDLER_AUTH_PARAME) {
+		// 呼叫执行函数响应结果
+		API_HANDLER_RESP_VO(execAddDetectionTemplate(dto));
+	}
+
+	
+
+private:
+	Uint64JsonVO::Wrapper execModifyDetectionTemplate(const DetectionTemplateDTO::Wrapper& dto);
+
+	Uint64JsonVO::Wrapper execRemoveSample(const UInt64& id);
+
+	DetectionTemplatePageJsonVO::Wrapper execQueryDetectionTemplateList(const DetectionTemplateQuery::Wrapper& query, const PayloadDTO& payload);
+	// 新增数据
+	Uint64JsonVO::Wrapper execAddDetectionTemplate(const DetectionTemplateDTO::Wrapper& dto);
+	
+};
+
+// 0 取消API控制器使用宏
+#include OATPP_CODEGEN_END(ApiController) //<- End Codegen
+#endif // _DETECTIONTEMPLATE_CONTROLLER_

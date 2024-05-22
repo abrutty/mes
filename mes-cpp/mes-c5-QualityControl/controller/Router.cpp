@@ -20,6 +20,12 @@
 #include "Router.h"
 #include "ApiHelper.h"
 #include "ProcessinSpection/ProcessinSpectionController.h"
+#include "Proinspect/ProinspectController.h"
+#include "awaitinspection/OaslController.h"
+#include "detectiontemplate/DetectionTemplateController.h"
+#include "detectiontemplate/DetectionItems/DetectionItemsController.h"
+#include "detectiontemplate/materialproducts/MaterialProductsController.h"
+#include "detectionitemsettings/DetectionItemSettingsController.h"
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
 #include "sample/SampleController.h"
@@ -51,7 +57,13 @@ void Router::initRouter()
 #endif
 
 	//#TIP :系统扩展路由定义，写在这个后面
-	ROUTER_SIMPLE_BIND(ProcessinSpectionController)
+	ROUTER_SIMPLE_BIND(ProcessinSpectionController);
+	ROUTER_SIMPLE_BIND(ProinspectController);
+	ROUTER_SIMPLE_BIND(OaslController);
+	ROUTER_SIMPLE_BIND(DetectionTemplateController);
+	ROUTER_SIMPLE_BIND(DetectionItemsController);
+	ROUTER_SIMPLE_BIND(MaterialProductsController);
+	ROUTER_SIMPLE_BIND(DetectionItemSettingsController);
 }
 
 #ifdef HTTP_SERVER_DEMO

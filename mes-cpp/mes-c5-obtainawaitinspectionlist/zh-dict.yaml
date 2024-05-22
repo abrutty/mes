@@ -1,7 +1,0 @@
-Pending_inspection:
- get:
-  summary: 获取待检列表
- fields:
-  code: 单据编码
-  material: 物料名称
-  detectionType: 检测类型
