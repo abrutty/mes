@@ -47,9 +47,9 @@ public:
 	}
 
 	// 3.1 定义导出接口描述
-	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("warehousemanagement.export.summary"), exportWarehouseManagement, StringJsonVO::Wrapper);
+	//API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("warehousemanagement.export.summary"), exportWarehouseManagement, StringJsonVO::Wrapper);
 	// 3.2 定义导出接口处理
-	API_HANDLER_ENDPOINT_AUTH(API_M_POST, "/WarehouseManagement/export", exportWarehouseManagement, BODY_DTO(oatpp::List<UInt64>, ids), execExportWarehouseManagement(ids));
+	//API_HANDLER_ENDPOINT_AUTH(API_M_POST, "/WarehouseManagement/export", exportWarehouseManagement, BODY_DTO(oatpp::List<UInt64>, ids), execExportWarehouseManagement(ids));
 
 
 private:
