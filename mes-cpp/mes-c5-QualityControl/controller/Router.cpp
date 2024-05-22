@@ -1,9 +1,25 @@
+/*
+ Copyright Zero One Star. All rights reserved.
+
+ @Author: awei
+ @Date: 2022/12/03 14:58:34
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+	  https://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+*/
 #include "stdafx.h"
 #include "Router.h"
 #include "ApiHelper.h"
-#include "warehousemanagement/WarehouseManagementController.h"
-#include "detectiontemplate/DetectionTemplateController.h"
-
+#include "ProcessinSpection/ProcessinSpectionController.h"
 #ifdef HTTP_SERVER_DEMO
 #include "user/UserController.h"
 #include "sample/SampleController.h"
@@ -11,13 +27,13 @@
 #include "ws/WSController.h"
 #endif
 
-// å¦‚æœå®šä¹‰äº†å…³é—­Swaggeræ–‡æ¡£å®
+// Èç¹û¶¨ÒåÁË¹Ø±ÕSwaggerÎÄµµºê
 #ifdef CLOSE_SWAGGER_DOC
-// ç®€åŒ–ç»‘å®šæ§åˆ¶å™¨å®å®šä¹‰
+// ¼ò»¯°ó¶¨¿ØÖÆÆ÷ºê¶¨Òå
 #define ROUTER_SIMPLE_BIND(__CLASS__) \
 router->addController(__CLASS__::createShared())
 #else
-// ç®€åŒ–ç»‘å®šæ§åˆ¶å™¨å®å®šä¹‰
+// ¼ò»¯°ó¶¨¿ØÖÆÆ÷ºê¶¨Òå
 #define ROUTER_SIMPLE_BIND(__CLASS__) \
 BIND_CONTROLLER(docEndpoints, router, __CLASS__)
 #endif
@@ -34,28 +50,21 @@ void Router::initRouter()
 	createSampleRouter();
 #endif
 
-<<<<<<<< HEAD:mes-cpp/c5-materialproduct/controller/Router.cpp
 	//#TIP :ÏµÍ³À©Õ¹Â·ÓÉ¶¨Òå£¬Ğ´ÔÚÕâ¸öºóÃæ
-	
-========
-	//#TIP :ç³»ç»Ÿæ‰©å±•è·¯ç”±å®šä¹‰ï¼Œå†™åœ¨è¿™ä¸ªåé¢
-	// ç»‘å®šæ§åˆ¶å™¨
-	ROUTER_SIMPLE_BIND(WarehouseManagementController);
-	ROUTER_SIMPLE_BIND(DetectionTemplateController);
->>>>>>>> remotes/origin/c5-obtain&exportwarehousemanagement-wuren:mes-cpp/c5-obtainexportwarehousemanagement-wuren/controller/Router.cpp
+	ROUTER_SIMPLE_BIND(ProcessinSpectionController)
 }
 
 #ifdef HTTP_SERVER_DEMO
 void Router::createSampleRouter()
 {
-	// ç»‘å®šç¤ºä¾‹æ§åˆ¶å™¨
+	// °ó¶¨Ê¾Àı¿ØÖÆÆ÷
 	ROUTER_SIMPLE_BIND(SampleController);
-	// ç»‘å®šç”¨æˆ·æ§åˆ¶å™¨
+	// °ó¶¨ÓÃ»§¿ØÖÆÆ÷
 	ROUTER_SIMPLE_BIND(UserController);
-	// ç»‘å®šæ–‡ä»¶æ§åˆ¶å™¨
+	// °ó¶¨ÎÄ¼ş¿ØÖÆÆ÷
 	ROUTER_SIMPLE_BIND(FileController);
 	
-	// ç»‘å®šWebSocketæ§åˆ¶å™¨
+	// °ó¶¨WebSocket¿ØÖÆÆ÷
 	router->addController(WSContorller::createShared());
 }
 #endif

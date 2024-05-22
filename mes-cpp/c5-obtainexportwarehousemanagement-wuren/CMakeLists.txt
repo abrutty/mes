@@ -7,7 +7,9 @@ cmake_minimum_required (VERSION 3.8)
 set(IS_ARCH_DEMO false)
 
 # 设置文件名称
-set (appName c5-materialproduct)
+
+set (appName c5-obtainexportwarehousemanagement-wuren)
+
 
 # 包含库目录
 include_directories ("./")

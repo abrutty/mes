@@ -1,33 +1,16 @@
-/*
- Copyright Zero One Star. All rights reserved.
 
- @Author: awei
- @Date: 2022/10/25 11:13:11
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-	  https://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
-*/
 #include "stdafx.h"
 #include "SampleService.h"
 #include "../../dao/sample/SampleDAO.h"
 
 SamplePageDTO::Wrapper SampleService::listAll(const SampleQuery::Wrapper& query)
 {
-	// ¹¹½¨·µ»Ø¶ÔÏó
+	// æ„å»ºè¿”å›å¯¹è±¡
 	auto pages = SamplePageDTO::createShared();
 	pages->pageIndex = query->pageIndex;
 	pages->pageSize = query->pageSize;
 
-	// ²éÑ¯Êı¾İ×ÜÌõÊı
+	// æŸ¥è¯¢æ•°æ®æ€»æ¡æ•°
 	SampleDAO dao;
 	uint64_t count = dao.count(query);
 	if (count <= 0)
@@ -35,11 +18,11 @@ SamplePageDTO::Wrapper SampleService::listAll(const SampleQuery::Wrapper& query)
 		return pages;
 	}
 
-	// ·ÖÒ³²éÑ¯Êı¾İ
+	// åˆ†é¡µæŸ¥è¯¢æ•°æ®
 	pages->total = count;
 	pages->calcPages();
 	list<SampleDO> result = dao.selectWithPage(query);
-	// ½«DO×ª»»³ÉDTO
+	// å°†DOè½¬æ¢æˆDTO
 	for (SampleDO sub : result)
 	{
 		auto dto = SampleDTO::createShared();
@@ -56,27 +39,27 @@ SamplePageDTO::Wrapper SampleService::listAll(const SampleQuery::Wrapper& query)
 
 uint64_t SampleService::saveData(const SampleDTO::Wrapper& dto)
 {
-	// ×é×°DOÊı¾İ
+	// ç»„è£…DOæ•°æ®
 	SampleDO data;
 // 	data.setName(dto->name.getValue(""));
 // 	data.setSex(dto->sex.getValue(""));
 // 	data.setAge(dto->age.getValue(1));
 	ZO_STAR_DOMAIN_DTO_TO_DO(data, dto, Name, name, Sex, sex, Age, age)
-	// Ö´ĞĞÊı¾İÌí¼Ó
+	// æ‰§è¡Œæ•°æ®æ·»åŠ 
 	SampleDAO dao;
 	return dao.insert(data);
 }
 
 bool SampleService::updateData(const SampleDTO::Wrapper& dto)
 {
-	// ×é×°DOÊı¾İ
+	// ç»„è£…DOæ•°æ®
 	SampleDO data;
 // 	data.setId(dto->id.getValue(0));
 // 	data.setName(dto->name.getValue(""));
 // 	data.setSex(dto->sex.getValue(""));
 // 	data.setAge(dto->age.getValue(1));
 	ZO_STAR_DOMAIN_DTO_TO_DO(data, dto, Name, name, Sex, sex, Age, age, Id, id)
-	// Ö´ĞĞÊı¾İĞŞ¸Ä
+	// æ‰§è¡Œæ•°æ®ä¿®æ”¹
 	SampleDAO dao;
 	return dao.update(data) == 1;
 }

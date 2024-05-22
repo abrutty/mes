@@ -4,10 +4,10 @@
 cmake_minimum_required (VERSION 3.8)
 
 # 标记是否是示例架构模块，业务模块需要将此致修改为false
-set(IS_ARCH_DEMO false)
+set(IS_ARCH_DEMO true)
 
 # 设置文件名称
-set (appName c5-materialproduct)
+set (appName arch-demo)
 
 # 包含库目录
 include_directories ("./")
