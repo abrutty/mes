@@ -40,6 +40,14 @@ if (query->expire_date) {\
 } \
 
 
+uint64_t WarehouseManagementDAO::count(const WarehouseManagementQuery::Wrapper & query)
+{
+	stringstream sql;
+	sql << "SELECT COUNT(*) FROM wm_transaction";
+	WAREHOUSEMANAGEMENT_TERAM_PARSE(query, sql);
+	string sqlStr = sql.str();
+	return sqlSession->executeQueryNumerical(sqlStr, params);
+}
 
 std::list<WarehouseManagementDO> WarehouseManagementDAO::selectWithPage(const WarehouseManagementQuery::Wrapper & query)
 	{

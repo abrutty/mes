@@ -1,4 +1,3 @@
-/*
 #include "stdafx.h"
 #include "WarehouseManagementService.h"
 #include "../../dao/warehousemanagement/WarehouseManagementDAO.h"
@@ -36,4 +35,3 @@ WarehouseManagementPageDTO::Wrapper WarehouseManagementService::listAll(const Wa
 	}
 	return pages;
 }
-*/
