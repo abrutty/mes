@@ -174,3 +174,4 @@ add_subdirectory ("arch-demo")
 
 add_subdirectory ("c5-processinspection-yuhui")
 add_subdirectory("mes-c5-QualityControl")
+add_subdirectory("mes-c5-WarehouseManagement")

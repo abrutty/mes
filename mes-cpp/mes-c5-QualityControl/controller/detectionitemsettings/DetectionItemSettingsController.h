@@ -51,12 +51,18 @@ public:
 	}
 	API_HANDLER_ENDPOINT_AUTH(API_M_DEL, "/detectionitemsettings/{id}", removeTheDetection, PATH(UInt64, id), execRemoveTheDetection(id));
 
+	// 3.1 定义导出接口描述
+	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("detectionitemsettings.export.summary"), exportDetectionItemSettings, StringJsonVO::Wrapper);
+	// 3.2 定义导出接口处理
+	API_HANDLER_ENDPOINT_AUTH(API_M_POST, "/detectionitemsettings/export", exportDetectionItemSettings, BODY_DTO(oatpp::List<UInt64>, id), execExportDetectionItemSettings(id));
 private:
 	//DetectionItemSettingsPageJsonVO::Wrapper execQueryqc(const DetectionItemSettingsQuery::Wrapper& query, const PayloadDTO& payload);
 	DetectionItemSettingsPageJsonVO::Wrapper execQueryqc(const DetectionItemSettingsQuery::Wrapper& query);
 	Uint64JsonVO::Wrapper execAddqc(const DetectionItemSettingsDTO::Wrapper& dto);
 	Uint64JsonVO::Wrapper execModifyqc(const DetectionItemSettingsDTO::Wrapper& dto);
 	Uint64JsonVO::Wrapper execRemoveTheDetection(const UInt64& id);
+	// 执行文件下载处理
+	StringJsonVO::Wrapper execExportDetectionItemSettings(const oatpp::List<UInt64>& id);
 };
 
 #include OATPP_CODEGEN_END(ApiController)

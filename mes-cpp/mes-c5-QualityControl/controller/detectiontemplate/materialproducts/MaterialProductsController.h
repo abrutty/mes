@@ -29,7 +29,8 @@
 #include "domain/vo/BaseJsonVO.h"
 #include "domain/vo/detectiontemplate/materialproductsVO.h"
 #include "domain/query/detectiontemplate/materialproductsQuery.h"
-
+#include "domain/vo/detectiontemplate/DetectionTemplateVO.h"
+#include "domain/query/detectiontemplate/DetectionTemplateQuery.h"
 #include OATPP_CODEGEN_BEGIN(ApiController)
 
 class MaterialProductsController : public oatpp::web::server::api::ApiController
@@ -93,6 +94,8 @@ public: // 定义接口
 	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("materialproducts.put.summary"), modifyMaterialProducts, Uint64JsonVO::Wrapper);
 	// 定义修改接口处理
 	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/qc/modify-template-materialproducts", modifyMaterialProducts, BODY_DTO(MaterialProductsDTO::Wrapper, dto), execModifyMaterialProducts(dto));
+
+	
 
 private: // 定义接口的执行函数
 

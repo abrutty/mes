@@ -76,3 +76,8 @@ Uint64JsonVO::Wrapper DetectionItemSettingsController::execRemoveTheDetection(co
 	return jvo;
 	return {};
 }
+
+StringJsonVO::Wrapper DetectionItemSettingsController::execExportDetectionItemSettings(const oatpp::List<UInt64>& id)
+{
+	return StringJsonVO::Wrapper();
+}
