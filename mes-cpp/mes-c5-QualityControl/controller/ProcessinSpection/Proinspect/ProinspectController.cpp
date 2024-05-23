@@ -89,3 +89,13 @@ Uint64JsonVO::Wrapper  ProinspectController::execRemoverecord(const UInt64& reco
 	//return jvo;
 	return {};
 }
+
+ProinspectPageJsonVO::Wrapper ProinspectController::execQueryProcessInspectionList(const ProinspectQuery::Wrapper& query, const PayloadDTO& payload)
+{
+	return ProinspectPageJsonVO::Wrapper();
+}
+
+ProinspectPageJsonVO::Wrapper ProinspectController::execQueryProcessInspectionDefectList(const ProinspectQuery::Wrapper& query, const PayloadDTO& payload)
+{
+	return ProinspectPageJsonVO::Wrapper();
+}

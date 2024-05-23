@@ -67,7 +67,12 @@ class  ProinspectDTO : public oatpp::DTO
 	}
 };
 
-
+/**
+ * 检测模板分页传输对象
+ */
+class ProinspectPageDTO : public PageDTO<ProinspectDTO::Wrapper> {
+	DTO_INIT(ProinspectPageDTO, PageDTO<ProinspectDTO::Wrapper>);
+};
 
 #include OATPP_CODEGEN_END(DTO)
 #endif // !_SAMPLE_DTO_
