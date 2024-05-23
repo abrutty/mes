@@ -19,7 +19,7 @@
 */
 #ifndef _PROINSPECT_DTO_H_
 #define _PROINSPECT_DTO_H_
-#include "../../GlobalInclude.h"
+#include "../../../GlobalInclude.h"
 
 #include OATPP_CODEGEN_BEGIN(DTO)
 

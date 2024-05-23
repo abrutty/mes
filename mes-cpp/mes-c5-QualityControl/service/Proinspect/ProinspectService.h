@@ -22,8 +22,8 @@
 #include <list>
 #include "domain/vo/BaseJsonVO.h"
 #include "domain/do/proinspect/ProinspectDO.h"
-#include "domain/dto/proinspect/ProinspectDTO.h"
-#include "domain/vo/proinspect/ProinspectVO.h"
+#include "domain/dto/processinspection/proinspect/ProinspectDTO.h"
+#include "domain/vo/processinspection/proinspect/ProinspectVO.h"
 /**
  * 示例服务实现，演示基础的示例服务实现
  */

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "ProinspectController.h"
 #include "service/proinspect/ProinspectService.h"
-#include "../ApiDeclarativeServicesHelper.h"
+#include "../../ApiDeclarativeServicesHelper.h"
 
 Uint64JsonVO::Wrapper ProinspectController::execAddrecord(const ProinspectDTO::Wrapper& dto)
 {

@@ -55,3 +55,8 @@ Uint64JsonVO::Wrapper ProcessinSpectionController::execModifyTheProcessInspectio
 	//return jvo;
 	return {};
 }
+
+ProcessinSpectionPageJsonVO::Wrapper ProcessinSpectionController::execAddProcessInspection(const ProcessinSpectionQuery::Wrapper& query, const PayloadDTO& payload)
+{
+	return {};
+}

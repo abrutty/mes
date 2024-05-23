@@ -20,7 +20,7 @@
 #include "Router.h"
 #include "ApiHelper.h"
 #include "ProcessinSpection/ProcessinSpectionController.h"
-#include "Proinspect/ProinspectController.h"
+#include "ProcessinSpection/Proinspect/ProinspectController.h"
 #include "awaitinspection/OaslController.h"
 #include "detectiontemplate/DetectionTemplateController.h"
 #include "detectiontemplate/DetectionItems/DetectionItemsController.h"

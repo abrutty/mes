@@ -69,4 +69,9 @@ Uint64JsonVO::Wrapper DetectionTemplateController::execAddDetectionTemplate(cons
 	return {};
 }
 
+DetectionTemplatePageJsonVO::Wrapper DetectionTemplateController::execQueryDetecTempDetails(const UInt64& template_id, const PayloadDTO& payload)
+{
+	return DetectionTemplatePageJsonVO::Wrapper();
+}
+
 
