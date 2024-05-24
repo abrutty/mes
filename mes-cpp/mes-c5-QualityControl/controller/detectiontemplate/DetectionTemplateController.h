@@ -60,7 +60,7 @@ public:
 
 	// 定义新增接口描述
 	ENDPOINT_INFO(addDetectionTemplate) {
-		// 定义接口标题
+		// 定义接口标题 添加检测模板
 		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("DetectionTemplate.post.summary"));
 		// 定义默认授权参数（可选定义，如果定义了，下面ENDPOINT里面需要加入API_HANDLER_AUTH_PARAME）
 		API_DEF_ADD_AUTH();
@@ -76,7 +76,7 @@ public:
 	//  定义获取检验模板详情接口描述
 	ENDPOINT_INFO(queryDetecTempDetails) {
 		// 定义接口标题
-		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("detectiontemplate.querydetectempdetails.summary"));
+		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("DetectionTemplate.querydetectempdetails.summary"));
 		// 定义默认授权参数（可选定义，如果定义了，下面ENDPOINT里面需要加入API_HANDLER_AUTH_PARAME）
 		API_DEF_ADD_AUTH();
 		// 定义响应参数格式

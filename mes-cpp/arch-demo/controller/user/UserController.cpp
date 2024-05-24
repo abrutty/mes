@@ -75,6 +75,7 @@ MenuJsonVO::Wrapper UserController::executeQueryMenu(const PayloadDTO& payload)
 	auto vo = MenuJsonVO::createShared();
 	// 创建模拟菜单数据（此数据应来源于数据库）
 	list<MenuDO> listData;
+	/*
 	listData.push_back(MenuDO("1", u8"系统管理", "sm", "/sm", ""));
 	listData.push_back(MenuDO("2", u8"用户管理", "sm", "/sm/um", "1"));
 	listData.push_back(MenuDO("3", u8"角色管理", "sm", "/sm/rm", "1"));
@@ -85,6 +86,7 @@ MenuJsonVO::Wrapper UserController::executeQueryMenu(const PayloadDTO& payload)
 	listData.push_back(MenuDO("8", u8"销售订单", "om", "/om/sm", "5"));
 	listData.push_back(MenuDO("9", u8"订单统计", "om", "/om/sm/t1", "8"));
 	listData.push_back(MenuDO("10",u8"订单报表", "om", "/om/sm/t2", "8"));
+	*/
 	// 转换为树形结构
 	list<shared_ptr<TreeNode>> res = TreeUtil::listToTree<MenuDO>(listData, TreeMenuMapper());
 	// 将根节点存储到列表中

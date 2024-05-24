@@ -10,45 +10,45 @@
 #include OATPP_CODEGEN_BEGIN(ApiController) //<- Begin Codegen
 
 /**
- * ¿ØÖÆÆ÷£¬»ù´¡½Ó¿ÚµÄÊ¹ÓÃ
+ * æ§åˆ¶å™¨ï¼ŒåŸºç¡€æ¥å£çš„ä½¿ç”¨
  */
 
-class WarehouseManagementController : public oatpp::web::server::api::ApiController // 1 ¼Ì³Ğ¿ØÖÆÆ÷
+class WarehouseManagementController : public oatpp::web::server::api::ApiController // 1 ç»§æ‰¿æ§åˆ¶å™¨
 {
-	// 2 ¶¨Òå¿ØÖÆÆ÷·ÃÎÊÈë¿Ú
+	// 2 å®šä¹‰æ§åˆ¶å™¨è®¿é—®å…¥å£
 	API_ACCESS_DECLARE(WarehouseManagementController);
-	// 3 ¶¨Òå½Ó¿Ú
+	// 3 å®šä¹‰æ¥å£
 public:
-	// ¶¨Òå²éÑ¯½Ó¿ÚÃèÊö
+	// å®šä¹‰æŸ¥è¯¢æ¥å£æè¿°
 	ENDPOINT_INFO(queryWarehouseManagement) {
-		// ¶¨Òå½Ó¿Ú±êÌâ
+		// å®šä¹‰æ¥å£æ ‡é¢˜ è·å–åº“å­˜åˆ—è¡¨ï¼ˆæ¡ä»¶+åˆ†é¡µï¼‰
 		API_DEF_ADD_TITLE(ZH_WORDS_GETTER("warehousemanagement.get.summary"));
-		// ¶¨ÒåÄ¬ÈÏÊÚÈ¨²ÎÊı£¨¿ÉÑ¡¶¨Òå£¬Èç¹û¶¨ÒåÁË£¬ÏÂÃæENDPOINTÀïÃæĞèÒª¼ÓÈëAPI_HANDLER_AUTH_PARAME£©
+		// å®šä¹‰é»˜è®¤æˆæƒå‚æ•°ï¼ˆå¯é€‰å®šä¹‰ï¼Œå¦‚æœå®šä¹‰äº†ï¼Œä¸‹é¢ENDPOINTé‡Œé¢éœ€è¦åŠ å…¥API_HANDLER_AUTH_PARAMEï¼‰
 		API_DEF_ADD_AUTH();
-		// ¶¨ÒåÏìÓ¦²ÎÊı¸ñÊ½
+		// å®šä¹‰å“åº”å‚æ•°æ ¼å¼
 		API_DEF_ADD_RSP_JSON_WRAPPER(WarehouseManagementPageJsonVO);
-		// ¶¨Òå·ÖÒ³²éÑ¯²ÎÊıÃèÊö
+		// å®šä¹‰åˆ†é¡µæŸ¥è¯¢å‚æ•°æè¿°
 		API_DEF_ADD_PAGE_PARAMS();
-		// ¶¨ÒåÆäËû²éÑ¯²ÎÊıÃèÊö
+		// å®šä¹‰å…¶ä»–æŸ¥è¯¢å‚æ•°æè¿°
 		API_DEF_ADD_QUERY_PARAMS(String, "item_code", ZH_WORDS_GETTER("warehousemanagement.field.item_code"), "", false);
 		API_DEF_ADD_QUERY_PARAMS(String, "item_name", ZH_WORDS_GETTER("warehousemanagement.field.item_name"), "", false);
 	}
-	// ¶¨Òå²éÑ¯½Ó¿Ú´¦Àí
+	// å®šä¹‰æŸ¥è¯¢æ¥å£å¤„ç†
 	ENDPOINT(API_M_GET, "/warehousemanagement", queryWarehouseManagement, QUERIES(QueryParams, queryParams), API_HANDLER_AUTH_PARAME) {
-		// ½âÎö²éÑ¯²ÎÊıÎªQueryÁìÓòÄ£ĞÍ
+		// è§£ææŸ¥è¯¢å‚æ•°ä¸ºQueryé¢†åŸŸæ¨¡å‹
 		API_HANDLER_QUERY_PARAM(warehousemanagementQuery, WarehouseManagementQuery, queryParams);
-		// ºô½ĞÖ´ĞĞº¯ÊıÏìÓ¦½á¹û
+		// å‘¼å«æ‰§è¡Œå‡½æ•°å“åº”ç»“æœ
 		API_HANDLER_RESP_VO(execQueryWarehouseManagement(warehousemanagementQuery, authObject->getPayload()));
 	}
 
 
 private:
-	// ·ÖÒ³²éÑ¯Êı¾İ
+	// åˆ†é¡µæŸ¥è¯¢æ•°æ®
 	WarehouseManagementPageJsonVO::Wrapper execQueryWarehouseManagement(const WarehouseManagementQuery::Wrapper& query, const PayloadDTO& payload);
 
 
 };
 
-// 0 È¡ÏûAPI¿ØÖÆÆ÷Ê¹ÓÃºê
+// 0 å–æ¶ˆAPIæ§åˆ¶å™¨ä½¿ç”¨å®
 #include OATPP_CODEGEN_END(ApiController) //<- End Codegen
 #endif // _WAREHOUSEMANAGEMENT_CONTROLLER_
