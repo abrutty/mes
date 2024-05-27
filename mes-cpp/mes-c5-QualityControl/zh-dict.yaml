@@ -127,11 +127,11 @@ templatedetectitem:
  get:
   summary: 检测模板检测项分页查询
  put:
-  summary: 修改数据
+  summary: 修改检测模板检测项
  post:
-  summary: 增加数据
+  summary: 增加检测模板检测项
  delete:
-  summary: 删除数据
+  summary: 删除检测模板检测项
  field:
   record_id: 记录ID
   template_id: 检测模板ID

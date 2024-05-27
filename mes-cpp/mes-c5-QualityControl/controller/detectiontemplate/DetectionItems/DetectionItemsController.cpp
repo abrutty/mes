@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "DetectionItemsController.h"
 #include "../../ApiDeclarativeServicesHelper.h"
-//#include "../../../service/detectiontemplate/TemplateDetectItemService.h"
 #include "../../../service/deletdetectiontemplate/TemplateDetectItemServive/TemplateDetectItemService.h"
 TemplateDetectItemPageJsonVO::Wrapper DetectionItemsController::execQueryTemplateDetectItem(const TemplateDetectItemQuery::Wrapper& query)
 {
@@ -10,7 +9,6 @@ TemplateDetectItemPageJsonVO::Wrapper DetectionItemsController::execQueryTemplat
 	auto jvo = TemplateDetectItemPageJsonVO::createShared();
 	jvo->success(result);
 	return jvo;
-	return {};
 }
 
 Uint64JsonVO::Wrapper DetectionItemsController::execModifyTemplateDetectItem(const TemplateDetectItemDTO::Wrapper& dto)
@@ -27,7 +25,6 @@ Uint64JsonVO::Wrapper DetectionItemsController::execModifyTemplateDetectItem(con
 	}
 	// 响应结果
 	return jvo;
-	return {};
 }
 
 Uint64JsonVO::Wrapper DetectionItemsController::execAddTemplateDetectItem(const TemplateDetectItemDTO::Wrapper& dto)
@@ -42,11 +39,11 @@ Uint64JsonVO::Wrapper DetectionItemsController::execAddTemplateDetectItem(const 
 		return jvo;
 	}
 	// 有效值校验
-	/*if (dto->template_id < 0 || dto->index_id<0 || dto->index_code->empty() || dto->index_name->empty() || dto->index_type->empty())
+	if (dto->template_id < 0 || dto->index_id<0 || dto->index_code->empty() || dto->index_name->empty() || dto->index_type->empty())
 	{
 		jvo->init(UInt64(-1), RS_PARAMS_INVALID);
 		return jvo;
-	}*/
+	}
 
 	// 定义一个Service
 	TemplateDetectItemService service;
@@ -60,7 +57,6 @@ Uint64JsonVO::Wrapper DetectionItemsController::execAddTemplateDetectItem(const 
 	}
 	//响应结果
 	return jvo;
-	return {};
 }
 
 Uint64JsonVO::Wrapper DetectionItemsController::execRemoveTemplateDetectItem(const UInt64& record_id)
@@ -84,5 +80,4 @@ Uint64JsonVO::Wrapper DetectionItemsController::execRemoveTemplateDetectItem(con
 	}
 	// 响应结果
 	return jvo;
-	return {};
 }

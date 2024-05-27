@@ -27,7 +27,7 @@ public:
 
 	}
 	// 定义查询接口处理
-	ENDPOINT(API_M_GET, "/qc/query-template-detect-item", queryTemplateDetectItem, QUERIES(QueryParams, queryParams), API_HANDLER_AUTH_PARAME) {
+	ENDPOINT(API_M_GET, "/qc/query-templatedetectitem", queryTemplateDetectItem, QUERIES(QueryParams, queryParams), API_HANDLER_AUTH_PARAME) {
 		// 解析查询参数为Query领域模型
 		API_HANDLER_QUERY_PARAM(query, TemplateDetectItemQuery, queryParams);
 		// 呼叫执行函数响应结果
@@ -37,7 +37,7 @@ public:
 	// 定义修改接口描述
 	API_DEF_ENDPOINT_INFO_AUTH(ZH_WORDS_GETTER("templatedetectitem.put.summary"), modifyTemplateDetectItem, Uint64JsonVO::Wrapper);
 	// 定义修改接口处理
-	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/qc/modify-template-detect-item", modifyTemplateDetectItem, BODY_DTO(TemplateDetectItemDTO::Wrapper, dto), execModifyTemplateDetectItem(dto));
+	API_HANDLER_ENDPOINT_AUTH(API_M_PUT, "/qc/modify-templatedetectitem", modifyTemplateDetectItem, BODY_DTO(TemplateDetectItemDTO::Wrapper, dto), execModifyTemplateDetectItem(dto));
 
 	// 定义新增接口描述
 	ENDPOINT_INFO(addTemplateDetectItem) {
@@ -49,7 +49,7 @@ public:
 		API_DEF_ADD_RSP_JSON_WRAPPER(Uint64JsonVO);
 	}
 	// 定义新增接口处理
-	ENDPOINT(API_M_POST, "/qc/add-template-detect-item", addTemplateDetectItem, BODY_DTO(TemplateDetectItemDTO::Wrapper, dto), API_HANDLER_AUTH_PARAME) {
+	ENDPOINT(API_M_POST, "/qc/add-templatedetectitem", addTemplateDetectItem, BODY_DTO(TemplateDetectItemDTO::Wrapper, dto), API_HANDLER_AUTH_PARAME) {
 		// 呼叫执行函数响应结果
 		API_HANDLER_RESP_VO(execAddTemplateDetectItem(dto));
 	}
@@ -62,7 +62,7 @@ public:
 		API_DEF_ADD_PATH_PARAMS(UInt64, "record_id", ZH_WORDS_GETTER("templatedetectitem.field.record_id"), 1, true);
 	}
 	// 3.2 定义删除接口处理
-	API_HANDLER_ENDPOINT_AUTH(API_M_DEL, "/qc/delete-template-detect-item/{record_id}", removeTemplateDetectItem, PATH(UInt64, record_id), execRemoveTemplateDetectItem(record_id));
+	API_HANDLER_ENDPOINT_AUTH(API_M_DEL, "/qc/delete-templatedetectitem/{record_id}", removeTemplateDetectItem, PATH(UInt64, record_id), execRemoveTemplateDetectItem(record_id));
 
 private: // 定义接口的执行函数
 	TemplateDetectItemPageJsonVO::Wrapper execQueryTemplateDetectItem(const TemplateDetectItemQuery::Wrapper& query); // 分页查询执行函数

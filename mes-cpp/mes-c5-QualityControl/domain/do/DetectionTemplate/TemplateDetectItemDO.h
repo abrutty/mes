@@ -4,73 +4,73 @@
 
 #include "../DoInclude.h"
 
-// 脛拢掳氓录矛虏芒录矛虏芒脧卯 脢媒戮脻驴芒脢碌脤氓脌脿
+// 检测模板检测项 DO
 class TemplateDetectItemDO
 {
-	// 录脟脗录ID
+	// 记录ID
 	CC_SYNTHESIZE(uint64_t, record_id, Record_id);
 
-	// 录矛虏芒脛拢掳氓ID
+	// 检测模板ID
 	CC_SYNTHESIZE(uint64_t, template_id, Template_id);
 
-	// 录矛虏芒脧卯ID
+	// 检测项ID
 	CC_SYNTHESIZE(uint64_t, index_id, Index_id);
 
-	// 录矛虏芒脧卯卤脿脗毛
+	// 检测项编码
 	CC_SYNTHESIZE(string, index_code, Index_code);
 
-	// 录矛虏芒脧卯脙没鲁脝
+	// 检测项名称
 	CC_SYNTHESIZE(string, index_name, Index_name);
 
-	// 录矛虏芒脧卯脌脿脨脥
+	// 检测项类型
 	CC_SYNTHESIZE(string, index_type, Index_type);
 
-	// 录矛虏芒鹿陇戮脽
+	// 检测工具
 	CC_SYNTHESIZE(string, qc_tool, Qc_tool);
 
-	// 录矛虏芒路陆路篓
+	// 检测方法
 	CC_SYNTHESIZE(string, check_method, Check_method);
 
-	// 卤锚脳录脰碌
+	// 标准值
 	CC_SYNTHESIZE(double, stander_val, Stander_val);
 
-	// 碌楼脦禄
+	// 单位
 	CC_SYNTHESIZE(string, unit_of_measure, Unit_of_measure);
 
-	// 脦贸虏卯脡脧脧脼
+	// 误差上限
 	CC_SYNTHESIZE(double, threshold_max, Threshold_max);
 
-	// 脦贸虏卯脧脗脧脼
+	// 误差下限
 	CC_SYNTHESIZE(double, threshold_min, Threshold_min);
 
-	// 脣碌脙梅脥录
+	// 说明图
 	CC_SYNTHESIZE(string, doc_url, Doc_url);
 
-	// 卤赂脳垄
+	// 备注
 	CC_SYNTHESIZE(string, remark, Remark);
 
-	// 脭陇脕么脳脰露脦1
+	// 预留字段1
 	CC_SYNTHESIZE(string, attr1, Attr1);
 
-	// 脭陇脕么脳脰露脦2
+	// 预留字段2
 	CC_SYNTHESIZE(string, attr2, Attr2);
 
-	// 脭陇脕么脳脰露脦3
+	// 预留字段3
 	CC_SYNTHESIZE(int, attr3, Attr3);
 
-	// 脭陇脕么脳脰露脦4
+	// 预留字段4
 	CC_SYNTHESIZE(int, attr4, Attr4);
 
-	// 麓麓陆篓脮脽
+	// 创建者
 	CC_SYNTHESIZE(string, create_by, Create_by);
 
-	// 麓麓陆篓脢卤录盲
+	// 创建时间
 	CC_SYNTHESIZE(string, create_time, Create_time);
 
-	// 赂眉脨脗脮脽
+	// 更新者
 	CC_SYNTHESIZE(string, update_by, Update_by);
 
-	// 赂眉脨脗脢卤录盲
+	// 更新时间
 	CC_SYNTHESIZE(string, update_time, Update_time);
 public:
 	TemplateDetectItemDO()
