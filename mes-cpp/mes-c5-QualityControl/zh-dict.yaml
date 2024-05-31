@@ -131,7 +131,7 @@ templatedetectitem:
  post:
   summary: 增加检测模板检测项
  delete:
-  summary: 删除检测模板检测项
+  summary: 删除检测模板检测项（支持批量删除）
  field:
   record_id: 记录ID
   template_id: 检测模板ID
