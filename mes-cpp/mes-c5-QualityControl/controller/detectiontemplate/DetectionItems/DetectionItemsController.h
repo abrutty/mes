@@ -24,6 +24,8 @@ public:
 		API_DEF_ADD_RSP_JSON_WRAPPER(TemplateDetectItemPageJsonVO);
 		// 定义分页查询参数描述
 		API_DEF_ADD_PAGE_PARAMS();
+		// 定义其他查询参数描述
+		API_DEF_ADD_QUERY_PARAMS(UInt64, "template_id", ZH_WORDS_GETTER("templatedetectitem.field.template_id"), 1, true);
 
 	}
 	// 定义查询接口处理
@@ -59,7 +61,7 @@ public:
 		// 定义标题和返回类型以及授权支持
 		API_DEF_ADD_COMMON_AUTH(ZH_WORDS_GETTER("templatedetectitem.delete.summary"), Uint64JsonVO::Wrapper);
 		// 定义其他路径参数说明
-		//API_DEF_ADD_PATH_PARAMS(UInt64, "record_id", ZH_WORDS_GETTER("templatedetectitem.field.record_id"), 1, true);
+		API_DEF_ADD_PATH_PARAMS(UInt64, "record_id", ZH_WORDS_GETTER("templatedetectitem.field.record_id"), 1, true);
 	}
 	// 3.2 定义删除接口处理
 	API_HANDLER_ENDPOINT_AUTH(API_M_DEL, "/qc/templatedetect-item/remove", removeTemplateDetectItem, BODY_DTO(oatpp::List<UInt64>, record_ids), execRemoveTemplateDetectItem(record_ids));
