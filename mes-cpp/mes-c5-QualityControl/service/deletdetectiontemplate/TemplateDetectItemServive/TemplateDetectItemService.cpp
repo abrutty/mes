@@ -119,6 +119,17 @@ bool TemplateDetectItemService::removeTemplateDetectItem(uint64_t record_id)
 	return dao.deleteByRecordId(record_id) == 1;
 }
 
+#ifdef LINUX
+string TemplateDetectItemService::getCurrentTime()
+{
+	time_t timep;
+	time(&timep);
+	char tmp[64];
+	strftime(tmp, sizeof(tmp), "%Y-%m-%d %H:%M:%S", localtime(&timep));
+	return tmp;
+}
+
+#else
 string TemplateDetectItemService::getCurrentTime()
 {
 	time_t time_seconds = time(0);
@@ -133,3 +144,4 @@ string TemplateDetectItemService::getCurrentTime()
 	time += to_string(now_time.tm_sec);
 	return time;
 }
+#endif
