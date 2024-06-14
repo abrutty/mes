@@ -233,5 +233,5 @@ https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#requirem
 
 ## 支持一下
 
-框架和项目源于**01星球**，可以关注[**01星球B站主页~**](https://space.bilibili.com/1653229811?spm_id_from=333.1007.0.0)
+框架和项目源于**01星球**，在此基础上进行二次开发和完善，可以关注[**01星球B站主页~**](https://space.bilibili.com/1653229811?spm_id_from=333.1007.0.0)
 
